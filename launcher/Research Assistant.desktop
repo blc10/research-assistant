@@ -2,7 +2,7 @@
 Type=Application
 Name=Research Assistant
 Comment=Start the personal research assistant
-Exec=/home/musa/Desktop/asistant/launcher/start_assistant.sh
-Icon=/home/musa/Desktop/asistant/assets/research-assistant.svg
+Exec=/home/Desktop/asistant/launcher/start_assistant.sh
+Icon=/home/Desktop/asistant/assets/research-assistant.svg
 Terminal=false
 Categories=Utility;
