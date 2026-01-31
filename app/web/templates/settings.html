@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="panel">
+  <h1>Ayarlar</h1>
+  <form method="post" class="settings-form">
+    <label>Tez Konusu</label>
+    <textarea name="thesis_topic" rows="4">{{ thesis_topic }}</textarea>
+
+    <label>Anahtar Kelimeler (virgülle)</label>
+    <textarea name="paper_keywords" rows="3">{{ paper_keywords }}</textarea>
+
+    <button type="submit">Kaydet</button>
+  </form>
+</section>
+{% endblock %}

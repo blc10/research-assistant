@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="panel">
+  <h1>Makaleler</h1>
+  <div class="filters">
+    <a href="{{ url_for('papers') }}">Hepsi</a>
+    <a href="{{ url_for('papers', status='new') }}">Yeni</a>
+    <a href="{{ url_for('papers', status='read') }}">Okunan</a>
+  </div>
+
+  {% if papers %}
+    <div class="paper-grid">
+      {% for paper in papers %}
+        <article>
+          <h3>{{ paper.title }}</h3>
+          {% if paper.relevance_score %}
+            <div class="badge">{{ '%.0f'|format(paper.relevance_score) }}/100</div>
+          {% endif %}
+          {% if paper.summary %}
+            <p>{{ paper.summary }}</p>
+          {% endif %}
+          {% if paper.url %}
+            <a href="{{ paper.url }}" target="_blank">Link</a>
+          {% endif %}
+          {% if paper.status != 'read' %}
+            <form method="post" action="{{ url_for('paper_read', paper_id=paper.id) }}">
+              <button type="submit">Okundu</button>
+            </form>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>Makale yok.</p>
+  {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="panel">
+  <h1>Yıllık Hedefler</h1>
+  <form method="post" class="task-form">
+    <input type="text" name="goal_title" placeholder="Örnek: 2026'da 3 makale yayınla" required />
+    <input type="number" name="goal_year" placeholder="Yıl" required />
+    <button type="submit">Ekle</button>
+  </form>
+
+  {% if goals %}
+    <ul>
+      {% for goal in goals %}
+        <li>
+          <strong>{{ goal.year }}</strong> — {{ goal.title }}
+          <span class="badge">{{ goal.progress }}%</span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Henüz hedef yok.</p>
+  {% endif %}
+</section>
+{% endblock %}

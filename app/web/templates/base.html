@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Asistan Paneli</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-title">Asistan</div>
+        <div class="brand-sub">Kişisel araştırma paneli</div>
+      </div>
+      <nav class="nav">
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('tasks') }}">Görevler</a>
+        <a href="{{ url_for('goals') }}">Hedefler</a>
+        <a href="{{ url_for('papers') }}">Makaleler</a>
+        <a href="{{ url_for('stats') }}">İstatistik</a>
+        <a href="{{ url_for('settings') }}">Ayarlar</a>
+      </nav>
+    </header>
+    <main class="content">
+      {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>

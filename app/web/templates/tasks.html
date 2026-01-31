@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="panel">
+  <h1>Görevler</h1>
+  <form method="post" class="task-form">
+    <input type="text" name="task_text" placeholder="Örnek: yarın 15:00 danışman toplantısı" required />
+    <button type="submit">Ekle</button>
+  </form>
+
+  {% if tasks %}
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Görev</th>
+          <th>Zaman</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for task in tasks %}
+        <tr>
+          <td>#{{ task.id }}</td>
+          <td>{{ task.title }}</td>
+          <td>{{ format_dt_local(task.due_at) }}</td>
+          <td>
+            <div class="inline-actions">
+              <form method="post" action="{{ url_for('task_done', task_id=task.id) }}">
+                <button type="submit">Tamamlandı</button>
+              </form>
+              <form method="post" action="{{ url_for('task_delete', task_id=task.id) }}">
+                <button type="submit" class="ghost">Sil</button>
+              </form>
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Görev yok.</p>
+  {% endif %}
+</section>
+{% endblock %}

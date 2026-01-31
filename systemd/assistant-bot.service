@@ -1,0 +1,16 @@
+[Unit]
+Description=Personal Research Assistant Telegram Bot
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/musa/Desktop/asistant
+EnvironmentFile=/home/musa/Desktop/asistant/.env
+ExecStart=/home/musa/Desktop/asistant/.venv/bin/python scripts/run_bot.py
+Restart=on-failure
+RestartSec=5
+User=musa
+Group=musa
+
+[Install]
+WantedBy=multi-user.target

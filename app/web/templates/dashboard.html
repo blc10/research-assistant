@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+  <div>
+    <h1>Bugün odak noktası</h1>
+    <p>{{ now.strftime('%d %B %Y, %A') }}</p>
+  </div>
+  <div class="hero-card">
+    <div class="label">Okuma Streak</div>
+    <div class="value">{{ streak }} gün</div>
+  </div>
+</section>
+
+<section class="stat-row">
+  <div class="stat-card">
+    <div class="label">Bekleyen Görev</div>
+    <div class="value">{{ stats.pending_tasks }}</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">Tamamlanan Görev</div>
+    <div class="value">{{ stats.done_tasks }}</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">Yeni Makale</div>
+    <div class="value">{{ stats.new_papers }}</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">Okunan Makale</div>
+    <div class="value">{{ stats.read_papers }}</div>
+  </div>
+</section>
+
+<section class="grid">
+  <div class="panel fade-in">
+    <h2>Bugünün Görevleri</h2>
+    {% if today_tasks %}
+      <ul>
+        {% for task in today_tasks %}
+          <li>{{ task.title }}</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Bugün için görev yok.</p>
+    {% endif %}
+  </div>
+
+  <div class="panel fade-in">
+    <h2>Yaklaşan Görevler</h2>
+    {% if pending_tasks %}
+      <ul>
+        {% for task in pending_tasks %}
+          <li>{{ task.title }}</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Görev listesi boş.</p>
+    {% endif %}
+  </div>
+</section>
+
+<section class="panel fade-in">
+  <h2>Son Makaleler</h2>
+  {% if recent_papers %}
+    <ul>
+      {% for paper in recent_papers %}
+        <li>
+          <strong>{{ paper.title }}</strong>
+          {% if paper.relevance_score %}
+            <span class="badge">{{ '%.0f'|format(paper.relevance_score) }}/100</span>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Son 24 saatte makale yok.</p>
+  {% endif %}
+</section>
+{% endblock %}
