@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-BASE_DIR="/home/musa/Desktop/asistant"
+BASE_DIR="/home/Desktop/asistant"
 VENV_PY="$BASE_DIR/.venv/bin/python"
 LOG_DIR="$BASE_DIR/logs"
 
