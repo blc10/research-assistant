@@ -4,9 +4,9 @@ After=network.target
 
 [Service]
 Type=simple
-WorkingDirectory=/home/musa/Desktop/asistant
-EnvironmentFile=/home/musa/Desktop/asistant/.env
-ExecStart=/home/musa/Desktop/asistant/.venv/bin/python scripts/run_bot.py
+WorkingDirectory=%h/Desktop/asistant
+EnvironmentFile=%h/Desktop/asistant/.env
+ExecStart=%h/Desktop/asistant/.venv/bin/python scripts/run_bot.py
 Restart=on-failure
 RestartSec=5
 User=musa

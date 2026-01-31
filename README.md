@@ -78,12 +78,13 @@ A desktop shortcut starts the bot + web UI and opens the dashboard:
 Usage:
 1) Ensure the launcher script is executable:
    - `chmod +x launcher/start_assistant.sh`
-2) Copy the desktop shortcut to your Desktop and update paths if needed:
+2) Copy the desktop shortcut to your Desktop:
    - `cp "launcher/Research Assistant.desktop" ~/Desktop/`
-3) Double‑click the desktop shortcut to start everything.
+3) If your project path differs, edit the desktop file to point to the correct location.
+4) Double‑click the desktop shortcut to start everything.
 
 ## systemd (Optional)
-Copy service files to `/etc/systemd/system/` and enable:
+Copy service files to `/etc/systemd/system/` and enable. If your project path differs, update the service files first:
 
 ```bash
 sudo systemctl daemon-reload
